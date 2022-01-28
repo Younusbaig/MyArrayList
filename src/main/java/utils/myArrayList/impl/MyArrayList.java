@@ -1,4 +1,4 @@
-package utils.example.utils;
+package utils.myArrayList.impl;
 
 
 public class MyArrayList<T extends Object> {
@@ -20,19 +20,19 @@ public class MyArrayList<T extends Object> {
 
     }
 
-    public Object get(int index) throws ArrayOutOfIndexException, NullException {
-        if (index >= array.length){
+    public Object get(int index) throws ArrayOutOfIndexException {
+        if (index >= array.length) {
             throw new ArrayOutOfIndexException("index is out of bound");
         }
 
-        if (array[index] != null){
+        if (array[index] != null) {
             return array[index];
+
         }
-        else
-        {
-            throw new NullException("error, Null value");
-        }
+        return null;
     }
 
-
+    public int size(){
+        return this.size;
     }
+}

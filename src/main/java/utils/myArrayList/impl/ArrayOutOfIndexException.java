@@ -1,4 +1,4 @@
-package utils.example.utils;
+package utils.myArrayList.impl;
 
 public class ArrayOutOfIndexException extends Exception {
 
