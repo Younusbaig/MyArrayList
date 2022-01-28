@@ -20,7 +20,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void getIndexTest(){
+    public void getIndexTest() {
         MyArrayList employee = new MyArrayList();
         employee.add("Muahammad");
         employee.add("Rehan");
@@ -28,4 +28,5 @@ public class MyArrayListTest {
         employee.get(0);
         assertNotNull(employee);
     }
+
 }
