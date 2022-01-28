@@ -1,26 +1,38 @@
 package utils.example.utils;
 
 
-public class MyArrayList {
+public class MyArrayList<T extends Object> {
 
-    private String[] array = new String[10];
+    private Object array[] = new Object[10];
     private int size = 0;
 
 
-    public void add(String string) {
-        array[size] = string;
+    public void add(Object obj) {
+        array[size] = obj;
         size++;
         if (size == array.length) {
-            String[] newArray = new String[array.length * 2];
+            Object[] newArray = new Object[array.length * 2];
             for (int i = 0; i < array.length; i++) {
                 newArray[i] = array[i];
             }
             array = newArray;
         }
+
     }
 
-    public String get(int index) {
-        return array[index];
+    public Object get(int index) throws ArrayOutOfIndexException, NullException {
+        if (index >= array.length){
+            throw new ArrayOutOfIndexException("index is out of bound");
+        }
+
+        if (array[index] != null){
+            return array[index];
+        }
+        else
+        {
+            throw new NullException("error, Null value");
+        }
     }
 
-}
+
+    }
