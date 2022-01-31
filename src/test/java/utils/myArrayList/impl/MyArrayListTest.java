@@ -1,16 +1,47 @@
 package utils.myArrayList.impl;
 
 
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MyArrayListTest {
 
+    private MyArrayList<Object> list;
+
+    @Before
+    public void setUp(){
+        list = new MyArrayList<>();
+    }
+
+    @Test
+    public void testListInit(){
+        assertEquals(0, list.size());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInvalidCapacity(){
+        list = new MyArrayList<>(-1);
+    }
+
+    @Test
+    public void TestAddList(){
+        Set<Object> names = new HashSet<>();
+        names.add("Ned");
+        names.add("Catelyn");
+        MyArrayList<Object> list = new MyArrayList<>(names);
+        Assert.assertEquals(2, list.size());
+
+    }
+
     @Test
     public void addListTest() throws ArrayOutOfIndexException {
-        MyArrayList<Object> expectedEmployeeData = new MyArrayList<>();
+        MyArrayList<Object> expectedEmployeeData = new MyArrayList<>(10);
         expectedEmployeeData.add("Muhammad");
         expectedEmployeeData.add(1);
         expectedEmployeeData.add(33.5);
@@ -23,7 +54,7 @@ public class MyArrayListTest {
 
     @Test
     public void getIndexTest() throws Exception {
-        MyArrayList<Object> employee = new MyArrayList<>();
+        MyArrayList<Object> employee = new MyArrayList<>(10);
         employee.add("Muhammad");
         employee.add(1);
         employee.add(36.7f);
@@ -33,7 +64,7 @@ public class MyArrayListTest {
 
     @Test
     public void getIndexTest1() throws Exception {
-        MyArrayList<Object> employee = new MyArrayList<>();
+        MyArrayList<Object> employee = new MyArrayList<>(10);
         employee.add(9);
         employee.add("Muhammad");
         employee.add(null);
@@ -43,7 +74,7 @@ public class MyArrayListTest {
 
     @Test(expected = ArrayOutOfIndexException.class)
     public void getIndexOutOfBoundTest() throws Exception {
-        MyArrayList<Object> employee = new MyArrayList<>();
+        MyArrayList<Object> employee = new MyArrayList<>(10);
         employee.add("Muhamamd");
         employee.add(22);
         employee.add(0.00);
