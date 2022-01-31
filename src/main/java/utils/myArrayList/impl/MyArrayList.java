@@ -1,11 +1,30 @@
 package utils.myArrayList.impl;
 
 
+import java.util.Collection;
+
 public class MyArrayList<T extends Object> {
 
-    private Object array[] = new Object[10];
-    private int size = 0;
+    private Object[] array;
+    private int size;
 
+
+    public MyArrayList(){
+        array = new Object[10];
+    }
+    public MyArrayList(int n){
+        if (n <=0){
+            throw new IllegalArgumentException("Invalid capacity");
+        }
+        array = new Object[n];
+        size = 0;
+    }
+    public MyArrayList(Collection<? extends T> c){
+        if (c.size() > 0){
+            array = c.toArray();
+            size = array.length;
+        }
+    }
 
     public void add(Object obj) {
         array[size] = obj;
