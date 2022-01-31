@@ -12,11 +12,11 @@ public class MyArrayList<T extends Object> {
     public MyArrayList(){
         array = new Object[10];
     }
-    public MyArrayList(int n){
-        if (n <=0){
+    public MyArrayList(int capacity){
+        if (capacity <=0){
             throw new IllegalArgumentException("Invalid capacity");
         }
-        array = new Object[n];
+        array = new Object[capacity];
         size = 0;
     }
     public MyArrayList(Collection<? extends T> c){
